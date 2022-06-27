@@ -125,6 +125,11 @@ public class Am300bBleManager extends BleManager {
             write_char = null;
             notify_char = null;
         }
+
+        @Override
+        protected void onServicesInvalidated() {
+
+        }
     }
 
     public void sendCmd(byte[] bytes) {
