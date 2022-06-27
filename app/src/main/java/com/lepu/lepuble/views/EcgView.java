@@ -195,7 +195,7 @@ public class EcgView extends View {
 
         canvas.drawPath(p, wPaint);
 
-        canvas.drawText("" + DataController.index, 0,100,bPaint);
+        // canvas.drawText("" + DataController.index, 0,100,bPaint);
     }
 
     public void clear() {

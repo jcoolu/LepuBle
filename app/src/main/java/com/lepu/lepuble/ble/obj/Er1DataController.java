@@ -6,7 +6,7 @@ import com.blankj.utilcode.util.LogUtils;
 public class Er1DataController {
     public static int index = 0;
 
-    public static int[] amp = {50, 10 ,20};
+    public static int[] amp = {5, 10 ,20};
     public static int ampKey = 0;
 
     public static int maxIndex;
