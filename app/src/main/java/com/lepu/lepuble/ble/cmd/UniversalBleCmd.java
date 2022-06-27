@@ -46,6 +46,8 @@ public class UniversalBleCmd {
         cmd[7] = (byte) 0x7D;  // 0 -> 125hz;  1-> 62.5hz
         cmd[8] = BleCRC.calCRC8(cmd);
 
+        System.out.println(cmd[7]);
+
         addNo();
         return cmd;
     }

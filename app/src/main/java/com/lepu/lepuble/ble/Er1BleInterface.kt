@@ -265,7 +265,8 @@ class Er1BleInterface : ConnectionObserver, Er1BleManager.onNotifyListener {
             }
 
             UniversalBleCmd.RT_DATA -> {
-                val rtData = Er1BleResponse.RtData(response.content)
+                val rtData = Er1BleResponse.RtData(response.content);
+
                 model.hr.value = rtData.param.hr
                 model.duration.value = rtData.param.recordTime
                 model.lead.value = rtData.param.leadOn
@@ -445,7 +446,6 @@ class Er1BleInterface : ConnectionObserver, Er1BleManager.onNotifyListener {
     override fun onDeviceConnected(device: BluetoothDevice) {
         state = true
         model.connect.value = state
-        LogUtils.d(mydevice.name)
 
         connecting = false
     }

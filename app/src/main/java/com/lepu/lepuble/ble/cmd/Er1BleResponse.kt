@@ -1,6 +1,7 @@
 package com.lepu.lepuble.ble.cmd
 
 import android.os.Parcelable
+import com.blankj.utilcode.util.LogUtils
 import com.lepu.lepuble.ble.obj.Er1DataController
 import com.lepu.lepuble.utils.ByteUtils
 import com.lepu.lepuble.utils.toUInt
@@ -19,11 +20,19 @@ object Er1BleResponse {
         var content: ByteArray
 
         init {
+            System.out.println("ER1 FULL RESPONSE");
             cmd = (bytes[1].toUInt() and 0xFFu).toInt()
             pkgType = bytes[3]
             pkgNo = (bytes[4].toUInt() and 0xFFu).toInt()
             len = toUInt(bytes.copyOfRange(5, 7))
             content = bytes.copyOfRange(7, 7+len)
+            System.out.println("HEADER" + (bytes[0].toUInt() and 0xFFu).toInt())
+            System.out.println("COMMAND: " + cmd);
+            System.out.println("pkgType " + pkgType);
+            System.out.println("pkgNo" + (bytes[4].toUInt() and 0xFFu).toInt())
+            System.out.println("Length" + toUInt(bytes.copyOfRange(5, 7)));
+            System.out.println("CONTENT: " + bytes.copyOfRange(7, 7 + len));
+
         }
     }
 
@@ -39,6 +48,7 @@ object Er1BleResponse {
 //            LogUtils.d(bytes.toHex())
             param = RtParam(bytes.copyOfRange(0, 20))
             wave = RtWave(bytes.copyOfRange(20, bytes.size))
+            System.out.println("WAVE DATA: " + wave);
         }
     }
 
@@ -81,10 +91,11 @@ object Er1BleResponse {
             len = toUInt(bytes.copyOfRange(0, 2))
             wave = bytes.copyOfRange(2, bytes.size)
             wFs = FloatArray(len)
+            LogUtils.d("waveArray: $wFs");
             for (i in 0 until len) {
                 wFs!![i] = Er1DataController.byteTomV(wave[2 * i], wave[2 * i + 1])
             }
-//            LogUtils.d(Arrays.toString(wFs))
+            LogUtils.d(Arrays.toString(wFs))
         }
     }
 

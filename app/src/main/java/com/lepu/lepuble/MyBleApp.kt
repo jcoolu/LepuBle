@@ -3,7 +3,7 @@ package com.lepu.lepuble
 import android.app.Application
 import com.jeremyliao.liveeventbus.LiveEventBus
 
-class MyBleApp : Application() {
+class                                       MyBleApp : Application() {
 
 
     override fun onCreate() {

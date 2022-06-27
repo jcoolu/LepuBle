@@ -140,8 +140,7 @@ public class EcgView extends View {
         maxIndex = Er1DataController.maxIndex;
 
 //        maxIndex = (int) (getWidth() / 2 / SPEED * 2);
-//        dataSrc = new byte[maxIndex*2];
-
+//        dataSrc = new byte[maxIndex*2]
         if (dataSrc == null) {
             dataSrc = new float[maxIndex];
         }
@@ -180,6 +179,7 @@ public class EcgView extends View {
 
                 float x = (float) (i+4)/5/ Er1DataController.mm2px / Er1DataController.speed;
 
+
                 p.moveTo(x, y);
                 i = i+4;
             } else {
@@ -195,7 +195,7 @@ public class EcgView extends View {
 
         canvas.drawPath(p, wPaint);
 
-//        canvas.drawText("" + DataController.index, 0,100,bPaint);
+        canvas.drawText("" + DataController.index, 0,100,bPaint);
     }
 
     public void clear() {

@@ -164,7 +164,7 @@ public class Er1BleManager extends BleManager {
     }
 
     public void sendCmd(byte[] bytes) {
-
+        System.out.println("HERE");
         LiveEventBus.get(EventMsgConst.EventBleLog).post(new BleLogItem(BleLogItem.Companion.getSEND(), bytes));
 
         writeCharacteristic(write_char, bytes)

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.blankj.utilcode.util.LogUtils
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.lepu.lepuble.R
 import com.lepu.lepuble.ble.Er1BleInterface
@@ -76,7 +77,7 @@ class Er1Fragment : Fragment() {
             }
 
             waveHandler.postDelayed(this, interval.toLong())
-//            LogUtils.d("DataRec: ${Er1DataController.dataRec.size}, delayed $interval")
+            LogUtils.d("DataRec: ${Er1DataController.dataRec.size}, delayed $interval")
 
             val temp = Er1DataController.draw(5)
             model.dataSrc.value = Er1DataController.feed(model.dataSrc.value, temp)
@@ -85,6 +86,7 @@ class Er1Fragment : Fragment() {
 
     private var runWave = false
     private fun startWave() {
+        // if wave is already started, ignore
         if (runWave) {
             return
         }

@@ -1,10 +1,12 @@
 package com.lepu.lepuble.ble.obj;
 
 
+import com.blankj.utilcode.util.LogUtils;
+
 public class Er1DataController {
     public static int index = 0;
 
-    public static int[] amp = {5, 10 ,20};
+    public static int[] amp = {50, 10 ,20};
     public static int ampKey = 0;
 
     public static int maxIndex;
@@ -72,11 +74,12 @@ public class Er1DataController {
             return 0f;
 
         int n = ((a & 0xFF) | (short) (b  << 8));
-
+        LogUtils.d("Sample");
+        LogUtils.d(n);
 //        float mv = (float) (n*12.7*1800*1.03)/(10*227*4096);
         float mv = (float) ( n * (1.0035 * 1800) / (4096 * 178.74));
 //        float mv = (float) (n * 0.002467);
-
+        LogUtils.d(mv);
         return mv;
     }
 }
